@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[9]:
 
 
 import streamlit as st  ## streamlit
@@ -10,58 +6,16 @@ import pandas as pd  ## for data manipulation
 from PIL import Image   ## For image
 from io import StringIO  ## for text input and output from the web app
 
-
-# In[10]:
-
-
 from sklearn.externals import joblib
 
 
-# # Loading models
-
-# In[11]:
-
-
-
-new_model = joblib.load('token_logesticreg.pkl')
-new_token = joblib.load('token_tfidf.pkl')
-
-
-# In[12]:
-
-
-#new prediction
-def predict(tweet):
-    
-    tweet = new_token.transform([tweet])
-    result = new_model.predict(tweet)
-    final = 'sincere' if result[0]==0 else 'insincere'
-
-    return final
-
-
-# In[13]:
-
-
-predict("trump")
-
-
-# In[ ]:
 
 
 
 
 
-# In[14]:
 
-
-predict('How did Quebec nationalists see their province as a nation in the 1960s?')
-
-
-# In[15]:
-
-
-def run():
+if __name__ == "__main__":
     st.sidebar.info('You can either enter the news item online in the textbox or upload a txt file')
     st.set_option('deprecation.showfileUploaderEncoding', False)
     add_selectbox = st.sidebar.selectbox("How would you like to predict?", ("Online", "Txt file"))
@@ -93,21 +47,39 @@ def run():
         st.balloons()
 
 
-# In[16]:
 
-
-if __name__ == "__main__":
-
-    run()
-
-
-# In[ ]:
+        
+new_model = joblib.load('token_logesticreg.pkl')
+new_token = joblib.load('token_tfidf.pkl')
 
 
 
+#new prediction
+def predict(tweet):
+    
+    tweet = new_token.transform([tweet])
+    result = new_model.predict(tweet)
+    final = 'sincere' if result[0]==0 else 'insincere'
+
+    return final
 
 
-# In[ ]:
+
+
+
+predict("trump")
+
+
+
+predict('How did Quebec nationalists see their province as a nation in the 1960s?')
+
+
+
+#if __name__ == "__main__":
+
+#    run()
+
+
 
 
 
