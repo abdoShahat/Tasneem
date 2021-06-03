@@ -1,3 +1,6 @@
-streamlit
-opencv-contrib-python-headless
-docx2txt==0.8  
+python==3.7.6
+Pillow=7.0.0
+streamlit==0.82.0
+pandas==1.0.1
+numpy==1.18.1
+scikit-learn==0.22.1
