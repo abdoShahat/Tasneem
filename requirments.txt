@@ -1,2 +1,2 @@
 streamlit
-distribute==0.6.24
+distribute
